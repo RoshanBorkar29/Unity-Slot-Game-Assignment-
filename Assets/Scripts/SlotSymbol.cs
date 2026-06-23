@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotSymbol : MonoBehaviour
+
+
+[System.Serializable]
+public class SlotSymbol
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string symbolName;
+    public Sprite sprite;
+    public int payout;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

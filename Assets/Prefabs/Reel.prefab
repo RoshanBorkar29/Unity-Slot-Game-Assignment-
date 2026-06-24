@@ -90,7 +90,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   symbolImage: {fileID: 9169862135738144634}
-  symbols: []
+  symbols:
+  - symbolName: Seven
+    sprite: {fileID: 21300000, guid: 7c5517170db60b243a282aa424fb2dbc, type: 3}
+    payout: 100
+  - symbolName: Cherry
+    sprite: {fileID: 21300000, guid: 76c73e895343d224c9bbad40346d622a, type: 3}
+    payout: 20
+  - symbolName: Bell
+    sprite: {fileID: 21300000, guid: 5e79fdb9aecd8614dbd2f3650d0c2f16, type: 3}
+    payout: 50
+  - symbolName: Bar
+    sprite: {fileID: 21300000, guid: 4ec4a9b35eda84941a3783a45b5cccf2, type: 3}
+    payout: 40
 --- !u!1 &6829603384961457046
 GameObject:
   m_ObjectHideFlags: 0

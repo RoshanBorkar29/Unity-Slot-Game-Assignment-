@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Reel : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Image symbolImage;
     public SlotSymbol[] symbols;
-    public int CurrentSymbolIndex{
-        get;
-        private set;
+
+    public int CurrentSymbolIndex { get; private set; }
+
+    public void SetSymbol(int index)
+    {
+        CurrentSymbolIndex = index;
+        symbolImage.sprite = symbols[index].sprite;
     }
-    public void SetRandomSymbol(){
-        CurrentSymbolIndex=Random.Range(0,symbols.Length);
-        symbolImage.sprite=symbols[CurrentSymbolIndex].sprite;
+
+    public void SetRandomVisual()
+    {
+        int randomIndex = Random.Range(0, symbols.Length);
+        symbolImage.sprite = symbols[randomIndex].sprite;
     }
-
-
-
 }

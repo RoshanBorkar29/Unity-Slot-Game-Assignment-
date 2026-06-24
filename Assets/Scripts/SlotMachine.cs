@@ -30,6 +30,7 @@ public class SlotMachine : MonoBehaviour
 
     public void Spin()
     {
+        // Prevent spinning if balance is insufficient
         if (balance < spinCost)
         {
             resultText.text = "Not Enough Balance!";
@@ -38,6 +39,7 @@ public class SlotMachine : MonoBehaviour
 
         resultText.text = "";
 
+        // Deduct spin cost
         balance -= spinCost;
         UpdateBalance();
 
@@ -55,12 +57,14 @@ public class SlotMachine : MonoBehaviour
 
     private IEnumerator SpinRoutine()
     {
+        // Generate final symbols before spinning
         int finalIndex1 = Random.Range(0, reel1.symbols.Length);
         int finalIndex2 = Random.Range(0, reel2.symbols.Length);
         int finalIndex3 = Random.Range(0, reel3.symbols.Length);
 
         float timer = 0f;
 
+        // Show random symbols while reels are spinning
         while (timer < 1.5f)
         {
             reel1.SetRandomVisual();
@@ -72,6 +76,7 @@ public class SlotMachine : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
+        // Stop reels one by one
         reel1.SetSymbol(finalIndex1);
         StartCoroutine(reel1.BounceAnimation());
 
@@ -94,6 +99,7 @@ public class SlotMachine : MonoBehaviour
 
     private void CheckWin()
     {
+        // Win only if all reels show the same symbol
         if (reel1.CurrentSymbolIndex ==
             reel2.CurrentSymbolIndex &&
             reel2.CurrentSymbolIndex ==
@@ -109,17 +115,15 @@ public class SlotMachine : MonoBehaviour
             resultText.text = "YOU WIN! +" + payout;
 
             audioManager.PlayWinSound();
-
-            StartCoroutine(ResultTextPop());
         }
         else
         {
             resultText.text = "TRY AGAIN!";
 
             audioManager.PlayLoseSound();
-
-            StartCoroutine(ResultTextPop());
         }
+
+        StartCoroutine(ResultTextPop());
     }
 
     private IEnumerator ResultTextPop()
@@ -130,6 +134,7 @@ public class SlotMachine : MonoBehaviour
 
         float timer = 0f;
 
+        // Pop-up animation for result text
         while (timer < 0.2f)
         {
             timer += Time.deltaTime;

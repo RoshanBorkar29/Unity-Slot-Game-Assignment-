@@ -9,18 +9,21 @@ public class Reel : MonoBehaviour
 
     public int CurrentSymbolIndex { get; private set; }
 
+    // Set final symbol when reel stops
     public void SetSymbol(int index)
     {
         CurrentSymbolIndex = index;
         symbolImage.sprite = symbols[index].sprite;
     }
 
+    // Display random symbols during spinning
     public void SetRandomVisual()
     {
         int randomIndex = Random.Range(0, symbols.Length);
         symbolImage.sprite = symbols[randomIndex].sprite;
     }
 
+    // Small bounce effect when reel lands
     public IEnumerator BounceAnimation()
     {
         Vector3 originalScale = transform.localScale;
